@@ -47,7 +47,7 @@ public class MergeTerritoryToState {
 		while (i < size) {
 			Command thisCommand = commands.get(i);
 			
-			Rep repFrom = new Rep(thisCommand.getFrom());
+			Rep repFrom = new Rep(thisCommand.getFrom());			
 			Rep repTo = new Rep(thisCommand.getTo());
 			
 			int fromInt = seeIfNew(repFrom, reps);
@@ -92,6 +92,7 @@ public class MergeTerritoryToState {
 			toOut += thisCommand.getIn() + "\r\n";
 			
 			i++;
+			System.out.println("Completed line " + i + "/" + size);
 		}
 		
 		String outfile2 = filepath.substring(0, filepath.lastIndexOf("\\")+1) + "Uncertify.txt";
@@ -103,6 +104,7 @@ public class MergeTerritoryToState {
 		BufferedWriter bw1 = new BufferedWriter(new FileWriter(outfile1));
 		bw1.write(toOut);
 		bw1.close();
+		System.out.println("Done.");
 	}
 
 	private static boolean betterType(Rep rep1, Rep rep2) {

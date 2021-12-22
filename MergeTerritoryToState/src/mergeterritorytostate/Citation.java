@@ -21,7 +21,7 @@ public class Citation {
 		id = thisStr.substring(0, bar0);
 		source = thisStr.substring(bar0 + 1, bar1);
 		type = thisStr.substring(bar1 + 1, bar2);
-		date = thisStr.substring(bar2 + 1, bar3);
+		date = thisStr.substring(bar2 + 1, bar3);		
 		description = thisStr.substring(bar3 + 1, bar4);
 		url = thisStr.substring(bar4 + 1, thisStr.length());
 	}
@@ -38,10 +38,12 @@ public class Citation {
 				url.contains("NGA") || description.contains("NGA") || url.contains("ODM") ||
 				description.contains("ODM") || source.contains("NGA") || source.contains("ODM");
 		
-		
 		if (!toRet && !redFlag) {
-			redFlag = (url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes)) ||
-					(!url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes));
+			redFlag = (url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes) && !source.equalsIgnoreCase(osource)) ||
+					(!url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)  && !source.equalsIgnoreCase(osource)) || 
+					(url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes) && source.equalsIgnoreCase(osource)) ||
+					(!url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)  && source.equalsIgnoreCase(osource)) ||
+					(!url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes) && source.equalsIgnoreCase(osource));
 		}
 		
 		return toRet;
@@ -61,6 +63,10 @@ public class Citation {
 
 	public String getDate() {
 		return date;
+	}
+
+	public boolean isFlagged() {
+		return redFlag;
 	}
 
 }

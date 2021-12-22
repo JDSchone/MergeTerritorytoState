@@ -31,7 +31,12 @@ public class Attr {
 		id = thisStr.substring(0, bar0);
 		type = thisStr.substring(bar0 + 1, bar1);
 		stYear = thisStr.substring(bar1 + 1, bar2);
-		text = thisStr.substring(bar2 + 1, bar3);
+		text = thisStr.substring(bar2 + 1, bar3);		
+		
+		if (text.equals("\\\"\\\"")) {
+			text = "";
+		}
+		
 		lang = thisStr.substring(bar3 + 1, bar4);
 		enYear = thisStr.substring(bar4 + 1, bar5);
 		copyright = thisStr.substring(bar5 + 1, bar6);
@@ -51,17 +56,14 @@ public class Attr {
 		
 		//This looks like nonsense, but basically it means that if the text and url are the same
 		//AND either the title is the same or the copyright information is the same, then we will
-		//consider the attirbutes the same. If one of these types of data is the same but both
+		//consider the attributes the same. If one of these types of data is the same but both
 		//are not, we will allow it but Red Flag it.
-		boolean toRet = (text.equalsIgnoreCase(otext) && url.equalsIgnoreCase(ourl)) && ((title.equalsIgnoreCase(otitle) || urlTitle.equalsIgnoreCase(ourlt)||
-		(cUrl.equalsIgnoreCase(ocurl) && copyright.equalsIgnoreCase(ocopy))));
+		boolean toRet = text.equalsIgnoreCase(otext) && title.equalsIgnoreCase(otitle) && url.equalsIgnoreCase(ourl) && urlTitle.equalsIgnoreCase(ourlt) &&
+		cUrl.equalsIgnoreCase(ocurl) && copyright.equalsIgnoreCase(ocopy);
 		
 		if (!toRet && !redFlag) {
-			redFlag = (!text.equalsIgnoreCase(otext) && url.equalsIgnoreCase(ourl)) ||
-			(text.equalsIgnoreCase(otext) && !url.equalsIgnoreCase(ourl)) ||
-			(text.equalsIgnoreCase(otext) && url.equalsIgnoreCase(ourl)) && !((title.equalsIgnoreCase(otitle) || urlTitle.equalsIgnoreCase(ourlt)||
-			(cUrl.equalsIgnoreCase(ocurl) && copyright.equalsIgnoreCase(ocopy)))) || !(text.equalsIgnoreCase(otext) && url.equalsIgnoreCase(ourl)) && ((title.equalsIgnoreCase(otitle) || urlTitle.equalsIgnoreCase(ourlt)||
-			(cUrl.equalsIgnoreCase(ocurl) && copyright.equalsIgnoreCase(ocopy))));
+			redFlag = text.equalsIgnoreCase(otext) || title.equalsIgnoreCase(otitle) || url.equalsIgnoreCase(ourl) || urlTitle.equalsIgnoreCase(ourlt) ||
+					cUrl.equalsIgnoreCase(ocurl) || copyright.equalsIgnoreCase(ocopy);
 		}
 		
 		return toRet;

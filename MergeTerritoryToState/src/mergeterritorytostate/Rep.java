@@ -61,14 +61,20 @@ public class Rep {
 		//Gets the variable sized "sets" of information, namely names, attrs and cites
 		dnames = getDNames(getSet(repStr, "displayNames"));
 		vnames = getVNames(getSet(repStr, "variantNames"));
-		attrs = getAttrs(getSet(repStr, "attributes"));
-		cites = getCites(getSet(repStr, "citations"));
+		
+		if (repStr.contains("attributes")) {
+			attrs = getAttrs(getSet(repStr, "attributes"));
+		}
+		
+		if (repStr.contains("citations")) {
+			cites = getCites(getSet(repStr, "citations"));
+		}
 	}
 
 	//Puts all Citations into a list
-	private LinkedList<Citation> getCites(String set) {
+	public LinkedList<Citation> getCites(String set) {
 		LinkedList<Citation> toRet = new LinkedList<Citation>();
-		LinkedList<String> extracted = extract(set);
+		LinkedList<String> extracted = extract(set, 5);
 		
 		int i = 0;
 		int size = extracted.size();
@@ -86,9 +92,9 @@ public class Rep {
 	}
 	
 	//Puts all Attributes into a list
-	private LinkedList<Attr> getAttrs(String set) {
+	public LinkedList<Attr> getAttrs(String set) {
 		LinkedList<Attr> toRet = new LinkedList<Attr>();
-		LinkedList<String> extracted = extract(set);
+		LinkedList<String> extracted = extract(set, 10);
 		
 		int i = 0;
 		int size = extracted.size();
@@ -106,9 +112,9 @@ public class Rep {
 	}
 	
 	//Puts all Variant Names into a list
-	private LinkedList<VariantName> getVNames(String set) {
+	public LinkedList<VariantName> getVNames(String set) {
 		LinkedList<VariantName> toRet = new LinkedList<VariantName>();
-		LinkedList<String> extracted = extract(set);
+		LinkedList<String> extracted = extract(set, 3);
 		
 		int i = 0;
 		int size = extracted.size();
@@ -126,9 +132,9 @@ public class Rep {
 	}
 	
 	//Puts all Display Names into a list
-	private LinkedList<DisplayName> getDNames(String set) {
+	public LinkedList<DisplayName> getDNames(String set) {
 		LinkedList<DisplayName> toRet = new LinkedList<DisplayName>();
-		LinkedList<String> extracted = extract(set);
+		LinkedList<String> extracted = extract(set, 1);
 		
 		int i = 0;
 		int size = extracted.size();
@@ -146,16 +152,10 @@ public class Rep {
 	}
 	
 	//Extracts strings from every set which will then be sent through various processes
-	private LinkedList<String> extract(String set) {
+	public LinkedList<String> extract(String set, int numbars) {
 		int oquo = set.indexOf("\"");
-		int equo = set.indexOf("\"", oquo + 1);
-		
-		//This statement allows the system to ignore cases of \", which should exclude all cases of quotes in the text
-		if (oquo != -1 && equo != -1) {
-			while (set.substring(equo - 1, equo + 1).equals("\\\"")) {
-				equo = set.indexOf("\"", equo + 1);
-			}
-		}
+		int skipindex = getSkipIndex(set, oquo + 1, numbars);
+		int equo = set.indexOf("\"", skipindex + 1);
 		
 		LinkedList<String> toRet = new LinkedList<String>();
 		
@@ -164,34 +164,40 @@ public class Rep {
 			toRet.add(substr);
 			
 			oquo = set.indexOf("\"", equo + 1);
-			equo = set.indexOf("\"", oquo + 1);
-			
-			if (oquo != -1 && equo != -1) {
-				while (set.charAt(equo - 1) == '\\') {
-					equo = set.indexOf("\"", equo + 1);
-				}
-			}
+			skipindex = getSkipIndex(set, oquo, numbars);
+			equo = set.indexOf("\"", skipindex + 1);
 		}
 		
 		return toRet;
 	}
 
+	private int getSkipIndex(String set, int oquo, int numbars) {
+		int i = 0;
+		int index = oquo;
+		
+		while (i < numbars) {
+			index = set.indexOf("|", index + 1);
+			i++;
+		}
+		return index;
+	}
+
 	//Gets sets of data from Solr that start with [ and end with ]
-	private String getSet(String repStr, String stat) {
+	public String getSet(String repStr, String stat) {
 		int i1 = repStr.indexOf(stat);
-		int i2 = repStr.indexOf("[", i1 + 1);
-		int i3 = repStr.indexOf("]", i2 + 1);
+		int i2 = repStr.indexOf(":[", i1 + 1);
+		int i3 = repStr.indexOf("],\r\n", i2 + 1);
 		
 		if (i2 == -1 || i3 == -1) {
 			return "";
 		}
 		
-		String toOut = repStr.substring(i2 + 1, i3);
+		String toOut = repStr.substring(i2 + 2, i3);
 		return toOut;
 	}
 
 	//Determines whether boolean is 1 (true) or 0 (false)
-	private boolean getBool(String repStr, String stat) {
+	public boolean getBool(String repStr, String stat) {
 		String fact = getFact(repStr, stat);
 		if (fact.equalsIgnoreCase("1")) {
 			return true;
@@ -202,7 +208,7 @@ public class Rep {
 	//Determines the value of the entry connected to the stat.
 	//If the stat is "ownerId", this formula will return
 	//the number listed after "ownerId".
-	private String getFact(String repStr, String stat) {
+	public String getFact(String repStr, String stat) {
 		int i1 = repStr.indexOf(stat);
 		int i2 = repStr.indexOf(":", i1 + 1);
 		int i3 = repStr.indexOf(",", i2 + 1);
@@ -289,7 +295,7 @@ public class Rep {
 		return this;
 	}
 
-	private String addAttr(Attr attri) {
+	public String addAttr(Attr attri) {
 		String toRet = "add_attr_exp\t" + repId + "\t";
 		toRet += attri.getType() + "\t";
 		toRet += attri.getStYear() + "\t";
@@ -309,12 +315,12 @@ public class Rep {
 		return toRet;
 	}
 
-	private LinkedList<Attr> getAttrs() {
+	public LinkedList<Attr> getAttrs() {
 		return attrs;
 	}
 
 	//Adds a variant name where the language and name were not previously represented
-	private String addVarName(VariantName namei) {
+	public String addVarName(VariantName namei) {
 		String toRet = "update_place_exp\t" + placeId + "\tvariant\t";
 		toRet += namei.getName() + "\t";
 		toRet += namei.getLang() + "\t";
@@ -360,7 +366,7 @@ public class Rep {
 	}
 
 	//Adds a display name where the language of the display name was not previously represented
-	private String addDispName(DisplayName namei) {
+	public String addDispName(DisplayName namei) {
 		String toRet = "update_rep_exp\t" + repId + "\tdisplay\t";
 		toRet += namei.getLang() + "\t";
 		toRet += namei.getName();
@@ -372,11 +378,11 @@ public class Rep {
 		return toRet;
 	}
 
-	private LinkedList<DisplayName> getDNames() {
+	public LinkedList<DisplayName> getDNames() {
 		return dnames;
 	}
 	
-	private LinkedList<VariantName> getVNames() {
+	public LinkedList<VariantName> getVNames() {
 		return vnames;
 	}
 
@@ -397,10 +403,6 @@ public class Rep {
 				Citation citej = cites.get(j);
 				done = citei.sameAs(citej);
 				
-				if (citej.getUrl().contains("https://publications.newberry.org/ahcbp")) {
-					System.out.println("Break");
-				}
-				
 				j++;
 			}
 			
@@ -416,17 +418,21 @@ public class Rep {
 		return this;
 	}
 
-	private String addCite(Citation citei) {
+	public String addCite(Citation citei) {
 		String toRet = "add_citation_exp\t" + repId + "\t";
 		toRet += citei.getSource() + "\t";
 		toRet += citei.getDate() + "\t";
 		toRet += citei.getUrl() + "\t";
 		toRet += citei.getDescription();
 		
+		if (citei.isFlagged()) {
+			toRet += "\t#Some of this citation appears redundant with an existing citation.";
+		}
+		
 		return toRet;
 	}
 
-	private LinkedList<Citation> getCites() {
+	public LinkedList<Citation> getCites() {
 		return cites;
 	}
 
