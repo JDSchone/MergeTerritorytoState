@@ -159,7 +159,7 @@ public class Rep {
 		
 		LinkedList<String> toRet = new LinkedList<String>();
 		
-		while (oquo != -1 && equo != -1) {
+		while (oquo != -1 && equo != -1 && skipindex != -1) {
 			String substr = set.substring(oquo + 1, equo);
 			toRet.add(substr);
 			
@@ -177,6 +177,11 @@ public class Rep {
 		
 		while (i < numbars) {
 			index = set.indexOf("|", index + 1);
+			
+			if (index == -1) {
+				return -1;
+			}
+			
 			i++;
 		}
 		return index;
