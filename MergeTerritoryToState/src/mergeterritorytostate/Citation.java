@@ -31,19 +31,19 @@ public class Citation {
 		String odes = other.getDescription();
 		String osource = other.getSource();
 		
-		boolean toRet = (url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)
-				&& source.equalsIgnoreCase(osource)) ||
+		boolean toRet = (url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)) ||
 				ourl.contains("NGA") || odes.contains("NGA") || ourl.contains("ODM") ||
 				odes.contains("ODM") || osource.contains("NGA") || osource.contains("ODM") ||
 				url.contains("NGA") || description.contains("NGA") || url.contains("ODM") ||
-				description.contains("ODM") || source.contains("NGA") || source.contains("ODM");
+				description.contains("ODM") || source.contains("NGA") || source.contains("ODM")
+				|| url.contains("ahcbp");
 		
 		if (!toRet && !redFlag) {
-			redFlag = (url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes) && !source.equalsIgnoreCase(osource)) ||
-					(!url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)  && !source.equalsIgnoreCase(osource)) || 
-					(url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes) && source.equalsIgnoreCase(osource)) ||
-					(!url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)  && source.equalsIgnoreCase(osource)) ||
-					(!url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes) && source.equalsIgnoreCase(osource));
+			redFlag = (url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes)) ||
+					(!url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)) || 
+					(url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes)) ||
+					(!url.equalsIgnoreCase(ourl) && description.equalsIgnoreCase(odes)) ||
+					(!url.equalsIgnoreCase(ourl) && !description.equalsIgnoreCase(odes));
 		}
 		
 		return toRet;
@@ -58,7 +58,10 @@ public class Citation {
 	}
 
 	public String getSource() {
-		return source;
+		if (source.equals("1476") || source.equals("1477") || source.equals("1478")) {
+			return "1476";
+		}
+		return "1483";
 	}
 
 	public String getDate() {

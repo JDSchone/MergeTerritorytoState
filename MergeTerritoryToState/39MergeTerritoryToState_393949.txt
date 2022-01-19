@@ -1,0 +1,14 @@
+﻿delete	8017231	8017230
+add_attr_exp	3994081	504				en				https://www.familysearch.org/wiki/en/Idaho,_United_States_Genealogy	Idaho Genealogy – FamilySearch Wiki	#Some of this attribute appears redundant with an existing attribute.
+add_attr_exp	3994081	541	1863	1892	Historical Boundaries 1863: Idaho, Washington Territory, United States; 1863: Boise, Washington Territory, United States; 1863: Boise, Idaho Territory, United States;  1864: Ada, Idaho Territory, United States;  1890: Ada, Idaho, United States Notes:  Post office created in 1863 Idaho Territorial Voters Poll Lists, 1863 from Family Search Became the capitol of Idaho on 24 December 1864	en						#Some of this attribute appears redundant with an existing attribute.
+add_citation_exp	3994081	1483	2016-08-15	https://en.wikipedia.org/wiki/Boise,_Idaho	Settled around 1862. Incorporated in 1864	#Some of this citation appears redundant with an existing citation.
+add_citation_exp	3994081	1476	2019-12-30	1870 U. S. Federal Population Census; citing NARA microfilm publication M593. Washington, D.C.: National Archives and Records Administration, n.d.	Place name in the 1870 Federal Census	#Some of this citation appears redundant with an existing citation.
+add_citation_exp	3994081	1476	2019-12-30	1880 U. S. Federal Population Census	Citing NARA microfilm publication T9. Washington, D.C.: National Archives and Records Administration, n.d.	#Some of this citation appears redundant with an existing citation.
+add_citation_exp	3994081	1483	2019-12-30	1890: Reconstructed Idaho Information	Citing Census 1890: Reconstructed Idaho Information. Boise, Idaho ; Idaho State Historical Society; on-going data input	#Some of this citation appears redundant with an existing citation.
+add_citation_exp	3994081	1483	2021-08-17	https://www.familysearch.org/library/books/records/item/580841-idaho-territorial-voters-poll-lists-1863?viewer=1&offset=1#p	Idaho territorial voters poll lists, 1863	#Some of this citation appears redundant with an existing citation.
+delete	3994082	3994081
+add_attr_exp	393948	479	1870		2675							#Some of this attribute appears redundant with an existing attribute.
+add_attr_exp	393948	479	1880		4674							#Some of this attribute appears redundant with an existing attribute.
+add_citation_exp	393948	1483	2018-11-30	https://adacounty.id.gov/About-Ada-County	Ada County was established on December 22, 1864.	#Some of this citation appears redundant with an existing citation.
+add_citation_exp	393948	1483	2018-11-30	https://adacounty.id.gov/About-Ada-County	Ada County was named after Ada Riggs, the daughter of Idaho Territorial Legislator H.C. Riggs, one of the founders of Boise	#Some of this citation appears redundant with an existing citation.
+delete	393949	393948

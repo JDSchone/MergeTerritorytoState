@@ -27,7 +27,14 @@ public class Command {
 	}
 
 	//Returns whether there is a move or a delete command
+	//For some reason "move" as I typed it and "move" as the delete_tree command output it
+	//were different at least once, so even though it looks the same, this makes the code
+	//work even if move is the first command given.
 	public boolean getMove() {
+		String first = in.substring(0, in.indexOf("\t"));
+		if (first.equals("﻿move")) {
+			return true;
+		}
 		return move;
 	}
 

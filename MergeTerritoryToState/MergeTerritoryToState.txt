@@ -1,0 +1,208 @@
+update_place_exp	1344	variant	Blacks Creek	en	437
+﻿move	3974898	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766398	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	10937218	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766424	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	3995998	393948
+move	10717930	10935383
+move	10827909	10935383
+move	10827910	10935383
+move	10561614	10935383
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11782880	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766482	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766505	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766515	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766520	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	4000173	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	4001724	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766378	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	4007005	393948
+move	10827914	4000049
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	8017281	393948
+update_place_exp	1344	variant	Blacks Creek	en	437
+move	11766529	393948
+delete	8078493	8078492
+delete	3974847	3974846
+delete	3995497	3995498
+delete	8078495	8078494
+delete	8078497	8078496
+delete	8078491	8078490
+delete	8078489	8078488
+delete	8078487	8078486
+delete	8078485	8078484
+delete	8078483	8078482
+delete	8078481	8078480
+delete	8078479	8078478
+delete	8078477	8078476
+delete	8078475	8078474
+delete	8078473	8078472
+delete	8078471	8078470
+delete	8078469	8078468
+delete	8078467	8078466
+delete	8078465	8078464
+delete	8078463	8078462
+delete	3974891	3974890
+delete	3995622	3995621
+delete	4001354	4001353
+delete	3995758	3995757
+delete	5989208	5989207
+delete	4015277	4015276
+delete	8078461	8078460
+delete	4000720	4000719
+delete	4023838	4023837
+delete	3995618	3995617
+delete	8078457	8078456
+delete	4010461	4010460
+delete	4010499	4010498
+delete	8078459	8078458
+delete	4010506	4010505
+delete	4010526	4010525
+delete	8078453	8078452
+delete	8078455	8078454
+delete	8078449	8078448
+delete	3995238	3995237
+delete	8078451	8078450
+delete	4001915	10935383
+delete	8078445	8078444
+delete	4001919	4001918
+delete	8078447	8078446
+delete	4001955	4001954
+delete	4012146	4012145
+delete	8078441	8078440
+delete	4012176	4012175
+delete	8078443	8078442
+delete	8078437	8078436
+delete	3976687	3976686
+delete	3995340	3995341
+delete	3995616	3995615
+delete	3995635	3995634
+delete	8078439	8078438
+delete	11760693	4001583
+delete	4001740	4001739
+delete	4011320	4011319
+delete	4001733	4001732
+delete	3997555	3997554
+delete	3976531	3976530
+delete	3995719	3995718
+delete	8078433	8078432
+delete	3998922	3998921
+delete	3995438	3995437
+delete	8078435	8078434
+delete	4010524	4010523
+delete	4000048	4000049
+delete	4007493	4007492
+delete	8017222	8017221
+delete	8078429	8078428
+delete	4005877	4005876
+delete	3995666	3995665
+delete	8078431	8078430
+delete	8078424	8078423
+delete	3997509	3997508
+delete	8078427	8078426
+add_attr_exp	393948	479	1870		2675							#Some of this attribute appears redundant with an existing attribute.
+add_attr_exp	393948	479	1880		4674							#Some of this attribute appears redundant with an existing attribute.
+add_citation_exp	393948	1483	2018-11-30	https://adacounty.id.gov/About-Ada-County	Ada County was established on December 22, 1864.	#Some of this citation appears redundant with an existing citation.
+add_citation_exp	393948	1483	2018-11-30	https://adacounty.id.gov/About-Ada-County	Ada County was named after Ada Riggs, the daughter of Idaho Territorial Legislator H.C. Riggs, one of the founders of Boise	#Some of this citation appears redundant with an existing citation.
+delete	393949	393948
+move	10908044	393944
+move	4015388	393944
+move	10908094	393944
+move	11769415	393944
+move	10705019	393944
+move	8017178	393944
+move	11769460	393944
+move	11769388	393944
+move	3998969	393944
+move	10908049	393944
+move	5975616	393944
+delete	8078665	8078666
+delete	8078670	8078671
+delete	3999239	3999240
+delete	3974804	3974805
+delete	11779336	3974790
+delete	11771044	11771043
+delete	11767217	8017182
+delete	11762823	11762821
+delete	3999261	3999262
+delete	8078668	8078669
+delete	10907696	10907575
+delete	3995632	3995633
+delete	8078674	8078675
+delete	8078672	8078673
+delete	8078635	8078636
+delete	8078637	8078638
+delete	11778002	11778005
+delete	11757557	11757556
+delete	11771052	11771051
+delete	11769373	11769371
+delete	11771544	11771543
+delete	4001032	4001033
+delete	11771569	11771568
+delete	4008398	11762349
+delete	4001065	4001066
+delete	11779383	11779382
+delete	4005950	4005951
+delete	3995753	3995754
+delete	10740879	10740877
+delete	11757566	11757564
+delete	4000792	4000793
+delete	4000790	4000791
+delete	4000767	4000768
+delete	8078631	8078632
+delete	3995295	3995296
+delete	4000257	4000258
+delete	11774125	11774126
+delete	8078633	8078634
+delete	4010538	4010539
+delete	11776601	4010682
+delete	8078627	8078628
+delete	4000879	4000880
+delete	10554432	11775511
+delete	4000876	4000877
+delete	11779405	11779402
+delete	4010514	4010515
+delete	4000862	11762345
+delete	393943	393944
+move	10935557	393941
+delete	393940	393941
+delete	395403	395404
+delete	395403	395404
+delete	392464	392463
+delete	392464	392463
+delete	392459	392458
+delete	392459	392458
+update_place_exp	235	variant	Lah-Toh	en	434
+update_place_exp	235	variant	Lah-Toh County	en	437
+update_place_exp	235	variant	Latah	en	440
+update_place_exp	235	variant	Latah County	en	440
+delete	3038084	392458
+add_attr_exp	392454	474				en				https://en.wikipedia.org/wiki/Lemhi,_Idaho	Lemhi, Idaho - Wikipedia	#Some of this attribute appears redundant with an existing attribute.
+delete	392455	392454
+add_attr_exp	392454	474				en				https://en.wikipedia.org/wiki/Lemhi,_Idaho	Lemhi, Idaho - Wikipedia	#Some of this attribute appears redundant with an existing attribute.
+delete	392455	392454
+delete	392493	392492
+delete	392493	392492
+move	10918577	392494
+move	8017849	392494
+move	10928729	392494
+move	10920218	392494
+delete	4018108	4018107
+delete	392495	392494
+delete	392488	392489
+delete	392488	392489
+delete	393927	393928
+delete	393927	393928

@@ -59,7 +59,7 @@ public class Attr {
 		//consider the attributes the same. If one of these types of data is the same but both
 		//are not, we will allow it but Red Flag it.
 		boolean toRet = text.equalsIgnoreCase(otext) && title.equalsIgnoreCase(otitle) && url.equalsIgnoreCase(ourl) && urlTitle.equalsIgnoreCase(ourlt) &&
-		cUrl.equalsIgnoreCase(ocurl) && copyright.equalsIgnoreCase(ocopy);
+		cUrl.equalsIgnoreCase(ocurl) && copyright.equalsIgnoreCase(ocopy) || text.contains("Historical Boundaries");
 		
 		if (!toRet && !redFlag) {
 			redFlag = text.equalsIgnoreCase(otext) || title.equalsIgnoreCase(otitle) || url.equalsIgnoreCase(ourl) || urlTitle.equalsIgnoreCase(ourlt) ||

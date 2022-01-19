@@ -26,6 +26,7 @@ public class Rep {
 	String toDate = "";
 	String type = "140";
 	LinkedList<String> changes = new LinkedList<String>();
+	boolean written = false;
 	
 	public Rep(String inId) throws IOException {
 		repId = inId;
@@ -89,7 +90,7 @@ public class Rep {
 		}
 		
 		return toRet;
-	}
+	} 
 	
 	//Puts all Attributes into a list
 	public LinkedList<Attr> getAttrs(String set) {
@@ -122,7 +123,7 @@ public class Rep {
 		while (i < size) {
 			String thisStr = extracted.get(i);
 			VariantName toAdd = new VariantName(thisStr);
-			
+
 			toRet.add(toAdd);
 			
 			i++;
@@ -171,7 +172,7 @@ public class Rep {
 		return toRet;
 	}
 
-	private int getSkipIndex(String set, int oquo, int numbars) {
+	public int getSkipIndex(String set, int oquo, int numbars) {
 		int i = 0;
 		int index = oquo;
 		
@@ -252,7 +253,7 @@ public class Rep {
 			while (j < sizej && !done) {
 				VariantName namej = vnames.get(j);
 				done = namei.sameAs(namej);
-				
+	
 				j++;
 			}
 			
@@ -328,6 +329,7 @@ public class Rep {
 	public String addVarName(VariantName namei) {
 		String toRet = "update_place_exp\t" + placeId + "\tvariant\t";
 		toRet += namei.getName() + "\t";
+		
 		toRet += namei.getLang() + "\t";
 		toRet += namei.getType();
 		
@@ -449,6 +451,13 @@ public class Rep {
 		String oDate = repFrom.getFromDate();
 		fromDate = oDate;
 		
+		if (oDate.equals("0")) {
+			oDate = "-2147483648";
+		}
+		
+		String change = "update_rep_exp\t" + repId + "\tfrom\t" + oDate;
+		changes.add(change);
+		
 		return this;
 	}
 
@@ -460,10 +469,16 @@ public class Rep {
 		String oType = repFrom.getType();
 		type = oType;
 		
+		String change = "update_rep_exp\t" + repId + "\ttype\t" + oType;
+		changes.add(change);
+		
 		return this;
 	}
 
 	public String toOut() {
+		if (written) {
+			return "";
+		}
 		int i = 0;
 		int size = changes.size();
 		
@@ -473,6 +488,7 @@ public class Rep {
 			toOut += changes.get(i) + "\r\n";
 			i++;
 		}
+		written = true;
 		return toOut;
 	}
 
